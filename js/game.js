@@ -78,7 +78,7 @@ const Game = {
         this.obstacles = []
         this.obstaclesDestroy = []
         this.cheese = []
-        this.bullet = []
+        this.bullets = []
 
 
     },
@@ -178,33 +178,24 @@ const Game = {
 
     isCollisionDestroyBullet() {
         return this.obstaclesDestroy.some((obstacleDestroy) => {
-
+            console.log(this.bullets)
             let esto = (
-                this.bullet.x + this.bullet.w - 10 >= obstacleDestroy.x &&
-                this.bullet.x <= obstacleDestroy.x + obstacleDestroy.w &&
-                this.bullet.y + this.bullet.h - 10 >= obstacleDestroy.y &&
-                this.bullet.y <= obstacleDestroy.y + obstacleDestroy.h
+                this.bullets.x + this.bullets.w - 10 >= obstacleDestroy.x &&
+                this.bullets.x <= obstacleDestroy.x + obstacleDestroy.w &&
+                this.bullets.y + this.bullets.h - 10 >= obstacleDestroy.y &&
+                this.bullets.y <= obstacleDestroy.y + obstacleDestroy.h
 
             )
-            if (esto = true) {
+            if (esto == true) {
 
-                console.log("obstaculo", obstacleDestroy)
+                // console.log("obstaculo", obstacleDestroy)
 
-                this.obstacleDestroy = this.obstaclesDestroy.filter((obstacleDestroy) => obstacleDestroy.x == this.bullet.x)
+                this.obstaclesDestroy.filter((obstacleDestroy) => obstacleDestroy.x + obstacleDestroy.w == this.bullet.x)
 
-
-
-            }
+            } return esto
         })
     },
 
-    destroy() {
-
-        if (this.bullet.h + this.bullet.w === this.obstacleDestroy.h + this.ObstacleDestroy.w)
-
-            this.obstaclesDestroy.filter((obstacleDestroy) => obstacleDestroy.x + obstacleDestroy.w === this.bullet)
-
-    },
 
     eatCheese() {
 
